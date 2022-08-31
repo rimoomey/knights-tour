@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 # Class for an x,y coordinate
-
 class Location
   attr_reader :x, :y
 
