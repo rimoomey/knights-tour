@@ -11,19 +11,19 @@ class Space
     @neighbors = []
   end
 
-  def update_neighbors
-    add_move(Space.new(@x - 1, @y - 2))
-    add_move(Space.new(@x - 2, @y - 1))
-    add_move(Space.new(@x - 2, @y + 1))
-    add_move(Space.new(@x - 1, @y + 2))
-    add_move(Space.new(@x + 1, @y + 2))
-    add_move(Space.new(@x + 2, @y + 1))
-    add_move(Space.new(@x + 2, @y - 1))
-    add_move(Space.new(@x + 1, @y - 2))
+  def update_neighbors!(x_max, y_max)
+    add_move(Space.new(@x - 1, @y - 2), x_max, y_max)
+    add_move(Space.new(@x - 2, @y - 1), x_max, y_max)
+    add_move(Space.new(@x - 2, @y + 1), x_max, y_max)
+    add_move(Space.new(@x - 1, @y + 2), x_max, y_max)
+    add_move(Space.new(@x + 1, @y + 2), x_max, y_max)
+    add_move(Space.new(@x + 2, @y + 1), x_max, y_max)
+    add_move(Space.new(@x + 2, @y - 1), x_max, y_max)
+    add_move(Space.new(@x + 1, @y - 2), x_max, y_max)
   end
 
-  def add_move(new_loc)
-    @neighbors.push(new_loc) if new_loc.valid?
+  def add_move(new_loc, x_max, y_max)
+    @neighbors.push(new_loc) if new_loc.valid?(x_max, y_max)
     nil
   end
 
