@@ -1,18 +1,23 @@
 # frozen_string_literal: false
 
 require_relative './space'
+require_relative './knight'
 
 # Chessboard class
 class Board
-  attr_accessor :space_graph, :x_size, :y_size
+  attr_accessor :x_size, :y_size, :piece
 
   def initialize(x_size, y_size)
     @x_size = x_size
     @y_size = y_size
-    @space_graph = Space.new(1, 1)
-    @space_graph.update_neighbors!(@x_size, @y_size)
+  end
+
+  def place_knight(x_loc, y_loc)
+    @piece = Knight.new(x_loc, y_loc)
+    @piece.update_neighbors!(@x_size, @y_size)
   end
 end
 
 x = Board.new(8, 8)
-p x
+x.place_knight(4, 4)
+puts x.piece.moves
