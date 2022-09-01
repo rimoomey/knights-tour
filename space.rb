@@ -2,16 +2,15 @@
 
 # Class for an x,y coordinate
 class Space
-  attr_accessor :x, :y, :visited
+  attr_accessor :visited, :predecessor
+  attr_reader :x, :y, :neighbors
 
   def initialize(x_loc, y_loc)
     @x = x_loc
     @y = y_loc
+    @neighbors = []
     @visited = false
-  end
-
-  def valid?(x_max, y_max)
-    @x >= 1 && @x <= x_max && y >= 1 && y <= y_max
+    @predecessor = nil
   end
 
   def ==(other)

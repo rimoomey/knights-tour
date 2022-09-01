@@ -12,9 +12,9 @@ class Knight < Piece
     @y_moves = [1, -1, 2, -2, 2, -2, 1, -1]
   end
 
-  def move(x_coord, y_coord)
-    if valid_move?(x_coord, y_coord)
-      super(x_coord, y_coord)
+  def move(space)
+    if valid_move?(space.x, space.y)
+      super(space)
     else
       'Invalid movement'
     end
@@ -27,11 +27,3 @@ class Knight < Piece
     false
   end
 end
-
-k = Knight.new(1, 2)
-puts k.space
-k.move(3, 3)
-puts k.space
-puts k.move(0, 0)
-puts "#{k.space} \n\n"
-puts k.historical_locations
