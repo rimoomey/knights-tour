@@ -22,3 +22,5 @@ end
 x = Board.new(3, 3)
 x.place_knight(1, 1)
 x.piece.pretty_print
+puts x.piece.space
+puts x.piece.space.neighbors[4].predecessor

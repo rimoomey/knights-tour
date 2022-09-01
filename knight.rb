@@ -10,14 +10,14 @@ class Knight < Piece
   end
 
   def add_children(x_max, y_max, path = @space)
-    path.add_child(Space.new(path.x - 1, path.y - 2), x_max, y_max)
-    path.add_child(Space.new(path.x - 2, path.y - 1), x_max, y_max)
-    path.add_child(Space.new(path.x - 2, path.y + 1), x_max, y_max)
-    path.add_child(Space.new(path.x - 1, path.y + 2), x_max, y_max)
-    path.add_child(Space.new(path.x + 1, path.y + 2), x_max, y_max)
-    path.add_child(Space.new(path.x + 2, path.y + 1), x_max, y_max)
-    path.add_child(Space.new(path.x + 2, path.y - 1), x_max, y_max)
-    path.add_child(Space.new(path.x + 1, path.y - 2), x_max, y_max)
+    path.add_child(Space.new(path.x - 1, path.y - 2, path), x_max, y_max)
+    path.add_child(Space.new(path.x - 2, path.y - 1, path), x_max, y_max)
+    path.add_child(Space.new(path.x - 2, path.y + 1, path), x_max, y_max)
+    path.add_child(Space.new(path.x - 1, path.y + 2, path), x_max, y_max)
+    path.add_child(Space.new(path.x + 1, path.y + 2, path), x_max, y_max)
+    path.add_child(Space.new(path.x + 2, path.y + 1, path), x_max, y_max)
+    path.add_child(Space.new(path.x + 2, path.y - 1, path), x_max, y_max)
+    path.add_child(Space.new(path.x + 1, path.y - 2, path), x_max, y_max)
   end
 
   def generate_paths(x_max, y_max, path = @space, distance = 0)

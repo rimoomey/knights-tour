@@ -2,11 +2,12 @@
 
 # Class for an x,y coordinate
 class Space
-  attr_reader :x, :y, :neighbors
+  attr_reader :x, :y, :neighbors, :predecessor
 
-  def initialize(x_loc, y_loc)
+  def initialize(x_loc, y_loc, predecessor = nil)
     @x = x_loc
     @y = y_loc
+    @predecessor = predecessor
     @neighbors = []
   end
 
