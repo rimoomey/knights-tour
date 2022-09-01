@@ -29,6 +29,12 @@ class Board
     queue.unshift(@piece.space)
     queue.push(@piece.space)
 
+    path = bfs_move(target, queue)
+    @spaces = make_spaces # reset board
+    print_chain(path)
+  end
+
+  def bfs_move(target, queue = [])
     until queue.empty?
       current_space = queue.pop
       return predecessor_chain(current_space) if [current_space.x, current_space.y] == target
@@ -47,6 +53,15 @@ class Board
     end
   end
 
+  def print_chain(predecessor_list)
+    output = "You finished in #{predecessor_list.size} moves. \n"
+    output += "Your path was: \n"
+    predecessor_list.each do |predecessor|
+      output += "#{predecessor} \n"
+    end
+    output
+  end
+
   def predecessor_chain(space, path = [])
     return path if space.nil?
 
@@ -56,4 +71,6 @@ class Board
 end
 
 b = Board.new(8, 8)
-puts b.knight_moves([1, 5], [6, 3])
+puts b.knight_moves([2, 3], [6, 3])
+puts b.knight_moves([2, 3], [5, 7])
+puts b.knight_moves([2, 3], [2, 3])
