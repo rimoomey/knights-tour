@@ -1,8 +1,12 @@
 # frozen_string_literal: true
 
+require_relative './breadth_first_search'
+
 # Class for an x,y coordinate
 class Space
-  attr_reader :x, :y, :neighbors, :predecessor
+  include BreadthFirstSearch
+
+  attr_accessor :x, :y, :neighbors, :predecessor
 
   def initialize(x_loc, y_loc, predecessor = nil)
     @x = x_loc
