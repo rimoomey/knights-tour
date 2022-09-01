@@ -11,4 +11,7 @@ class Board
     @x_size = x_size
     @y_size = y_size
   end
+
+  def knight_moves(start, target)
+  end
 end
