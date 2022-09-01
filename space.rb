@@ -27,6 +27,10 @@ class Space
     @x == other.x && @y == other.y
   end
 
+  def to_a
+    [@x, @y]
+  end
+
   def to_s
     [@x, @y].to_s
   end

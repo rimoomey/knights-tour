@@ -2,9 +2,11 @@
 
 require_relative './space'
 require_relative './knight'
+require_relative './breadth_first_search'
 
 # Chessboard class
 class Board
+  include BreadthFirstSearch
   attr_accessor :x_size, :y_size, :piece
 
   def initialize(x_size, y_size)
