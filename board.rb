@@ -14,10 +14,11 @@ class Board
 
   def place_knight(x_loc, y_loc)
     @piece = Knight.new(x_loc, y_loc)
-    @piece.update_neighbors!(@x_size, @y_size)
+    @piece.generate_paths(@x_size, @y_size)
+    @piece.reset
   end
 end
 
-x = Board.new(8, 8)
-x.place_knight(4, 4)
-puts x.piece.moves
+x = Board.new(3, 3)
+x.place_knight(1, 1)
+x.piece.pretty_print

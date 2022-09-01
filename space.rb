@@ -11,14 +11,19 @@ class Space
   end
 
   def add_child(new_loc, x_max, y_max)
-    @neighbors.push(new_loc) if new_loc.valid?(x_max, y_max)
-    nil
+    if new_loc.valid?(x_max, y_max)
+      @neighbors.push(new_loc)
+      return
+    end
+    @neighbors.push(nil)
   end
 
   def valid?(x_max, y_max)
-    return true if @x >= 1 && @x <= x_max && y >= 1 && y <= y_max
+    @x >= 1 && @x <= x_max && y >= 1 && y <= y_max
+  end
 
-    false
+  def ==(other)
+    @x == other.x && @y == other.y
   end
 
   def to_s
