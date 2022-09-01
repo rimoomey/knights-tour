@@ -22,7 +22,7 @@ class Knight < Piece
     @space.neighbors
   end
 
-  def update_paths(x_max, y_max, path = @space)
+  def add_children(x_max, y_max, path = @space)
     path.add_child(Space.new(path.x - 1, path.y - 2), x_max, y_max)
     path.add_child(Space.new(path.x - 2, path.y - 1), x_max, y_max)
     path.add_child(Space.new(path.x - 2, path.y + 1), x_max, y_max)
@@ -40,7 +40,7 @@ class Knight < Piece
 
     @space_list.push([path.x, path.y])
 
-    update_paths(x_max, y_max, path)
+    add_children(x_max, y_max, path)
     path.neighbors.each do |neighbor|
       generate_paths(x_max, y_max, neighbor, distance + 1)
     end
