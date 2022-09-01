@@ -18,13 +18,13 @@ class Knight < Piece
   end
 
   def update_neighbors!(x_max, y_max)
-    @space.add_move(Space.new(@space.x - 1, @space.y - 2), x_max, y_max)
-    @space.add_move(Space.new(@space.x - 2, @space.y - 1), x_max, y_max)
-    @space.add_move(Space.new(@space.x - 2, @space.y + 1), x_max, y_max)
-    @space.add_move(Space.new(@space.x - 1, @space.y + 2), x_max, y_max)
-    @space.add_move(Space.new(@space.x + 1, @space.y + 2), x_max, y_max)
-    @space.add_move(Space.new(@space.x + 2, @space.y + 1), x_max, y_max)
-    @space.add_move(Space.new(@space.x + 2, @space.y - 1), x_max, y_max)
-    @space.add_move(Space.new(@space.x + 1, @space.y - 2), x_max, y_max)
+    @space.add_child(Space.new(@space.x - 1, @space.y - 2), x_max, y_max)
+    @space.add_child(Space.new(@space.x - 2, @space.y - 1), x_max, y_max)
+    @space.add_child(Space.new(@space.x - 2, @space.y + 1), x_max, y_max)
+    @space.add_child(Space.new(@space.x - 1, @space.y + 2), x_max, y_max)
+    @space.add_child(Space.new(@space.x + 1, @space.y + 2), x_max, y_max)
+    @space.add_child(Space.new(@space.x + 2, @space.y + 1), x_max, y_max)
+    @space.add_child(Space.new(@space.x + 2, @space.y - 1), x_max, y_max)
+    @space.add_child(Space.new(@space.x + 1, @space.y - 2), x_max, y_max)
   end
 end
