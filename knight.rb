@@ -4,12 +4,21 @@ require_relative './piece'
 
 # Polymorphic Knight class
 class Knight < Piece
-  attr_reader :moves
+  attr_reader :legal_moves
 
   def initialize(coordinates)
     super(coordinates)
     @legal_moves = moveset
   end
+
+  def make_child(move)
+    child = Knight.new(move)
+    child.predecessor = self
+    @children << child
+    child
+  end
+
+  private
 
   def moveset
     result = []
@@ -24,7 +33,3 @@ class Knight < Piece
     result
   end
 end
-
-k = Knight.new([1, 1])
-p k.coordinates
-p k.moveset
