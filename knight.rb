@@ -4,26 +4,24 @@ require_relative './piece'
 
 # Polymorphic Knight class
 class Knight < Piece
-  attr_reader :x_moves, :y_moves
+  attr_reader :location, :moves, :neighbors
 
-  def initialize(x_coord, y_coord)
-    super(x_coord, y_coord)
-    @x_moves = [-2, -2, -1, -1, 1, 1, 2, 2]
-    @y_moves = [1, -1, 2, -2, 2, -2, 1, -1]
+  def initialize(coordinates)
+    super(coordinates)
+    @moves = moveset
+    @neighbors = []
   end
 
-  def move(space)
-    if valid_move?(space.x, space.y)
-      super(space)
-    else
-      'Invalid movement'
-    end
-  end
+  def moveset
+    moves = [
+      [-2, -1], [-2, 1], [-1, -2], [-1, 2],
+      [2, -1], [2, 1], [1, -2], [1, 2]
+    ]
 
-  def valid_move?(x_coord, y_coord)
-    @x_moves.each_with_index do |x, index|
-      return true if (@space.x + x) == x_coord && @space.y + @y_moves[index] == y_coord
+    moves.map do |shift|
+      coordinates + shift
     end
-    false
   end
 end
+
+k = Knight.new([1, 1])

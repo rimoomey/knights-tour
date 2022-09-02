@@ -4,16 +4,16 @@ require_relative './space'
 
 # Class to represent knight on a chess board.
 class Piece
-  attr_reader :space
+  attr_reader :location
 
-  def initialize(x_coord, y_coord)
-    @space = Space.new(x_coord, y_coord)
-    @space.visited = true
+  def initialize(coordinates)
+    @location = Space.new(coordinates[0], coordinates[1])
+    @location.visited = true
   end
 
-  def move(new_space)
-    new_space.predecessor = @space
-    @space = new_space
-    @space.visited = true
+  def move(new_location)
+    new_location.predecessor = @location
+    @location = new_location
+    @location.visited = true
   end
 end
