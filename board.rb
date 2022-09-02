@@ -16,6 +16,7 @@ class Board
       piece = queue.pop
       piece.legal_moves.each do |move|
         next if @history.include?(move)
+
         child = piece.make_child(move)
 
         @history << move
