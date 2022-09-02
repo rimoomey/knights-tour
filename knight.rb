@@ -17,12 +17,9 @@ class Knight < Piece
       [-2, -1], [-2, 1], [-1, -2], [-1, 2],
       [2, -1], [2, 1], [1, -2], [1, 2]
     ]
-
     moves.each do |shift|
       move = [coordinates[0] + shift[0], coordinates[1] + shift[1]]
-      next unless move[0].between?(1, 8) && move[1].between?(1, 8)
-
-      result << move
+      result << move if move[0].between?(1, 8) && move[1].between?(1, 8)
     end
     result
   end
