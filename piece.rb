@@ -13,13 +13,13 @@ class Piece
 
   def bfs(coords, queue = [self])
     while queue.size.positive?
-      knight = queue.pop
-      if coords == knight.coordinates
-        return knight unless block_given?
+      current = queue.pop
+      if coords == current.coordinates
+        return current unless block_given?
 
-        yield knight
+        yield current
       end
-      knight.children.each do |child|
+      current.children.each do |child|
         queue.append(child)
       end
     end
