@@ -11,16 +11,15 @@ class Board
   end
 
   def make_board(initial_piece, queue = [initial_piece])
-    @history = []
+    @history = [initial_piece.coordinates]
     while queue.size.positive?
-      piece = queue.pop
+      piece = queue.shift
       piece.legal_moves.each do |move|
         next if @history.include?(move)
 
         child = piece.make_child(move)
 
         @history << move
-        piece.children << child
         queue.append(child)
       end
     end
@@ -47,7 +46,3 @@ class Board
     puts output
   end
 end
-
-b = Board.new
-b.knight_moves([1, 1], [3, 4])
-b.knight_moves([1, 1], [8, 8])
